@@ -15,6 +15,11 @@ var users = new List<User>
     new User { Id = 2, Name = "Bob", Email = "bob@example.com", Age = 25 }
 };
 
+// Register the Middleware
+app.UseMiddleware<ExceptionHandlingMiddleware>();
+app.UseMiddleware<TokenAuthenticationMiddleware>();
+app.UseMiddleware<RequestResponseLoggingMiddleware>();
+
 // Global exception handler
 app.UseExceptionHandler(errorApp =>
 {
